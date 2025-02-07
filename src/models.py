@@ -45,7 +45,7 @@ class Media(Base):
     __tablename__ = 'media'
 
     id = Column(Integer, primary_key=True)
-    type = Column(String(10), nullable=False)  # Se usa String en lugar de Enum
+    type = Column(String(10), nullable=False)
     url = Column(String(255), nullable=False)
     post_id = Column(Integer, ForeignKey('post.id'), nullable=False)
 
@@ -62,6 +62,6 @@ class Comment(Base):
     author = relationship("User", back_populates="comments")
     post = relationship("Post", back_populates="comments")
 
-# Creación del motor de base de datos
+
 engine = create_engine('sqlite:///instagram_clone.db')
 Base.metadata.create_all(engine)
